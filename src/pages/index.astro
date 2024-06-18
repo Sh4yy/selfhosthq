@@ -40,17 +40,19 @@ if (Astro.request.method === "POST") {
 ---
 
 <ProseLayout>
-  <h1>hello world!</h1>
-  <p>
-    SelfhostHQ is a community-driven, open-source project that aims to provide
-    comprehensive guides and best practices for self-hosting services. Our goal
-    is to make self-hosting easy and accessible to everyone.
-  </p>
-  <p>
-    If you're interested in contributing to this project, please visit our
-    <a href="https://github.com/Sh4yy/selfhosthq" target="_blank">GitHub</a> page.
-    We welcome all contributions, including feedback, bug reports, and pull requests.
-  </p>
-  <p>Happy self-hosting! (✿◠‿◠)</p>
-  <Newsletter />
+  <div class="p-4 sm:p-8">
+    <h1 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-4">Hello World!</h1>
+    <p class="mb-4 text-white text-base sm:text-lg md:text-xl">
+      SelfhostHQ is a community-driven, open-source project that aims to provide
+      comprehensive guides and best practices for self-hosting services. Our goal
+      is to make self-hosting easy and accessible to everyone.
+    </p>
+    <p class="mb-4 text-white text-base sm:text-lg md:text-xl">
+      If you're interested in contributing to this project, please visit our
+      <a href="https://github.com/Sh4yy/selfhosthq" target="_blank" class="text-blue-500 hover:underline">GitHub</a> page.
+      We welcome all contributions, including feedback, bug reports, and pull requests.
+    </p>
+    <p class="mb-4 text-white text-base sm:text-lg md:text-xl">Happy self-hosting! (✿◠‿◠)</p>
+    <Newsletter />
+  </div>
 </ProseLayout>
