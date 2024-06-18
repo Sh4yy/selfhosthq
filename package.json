@@ -14,6 +14,7 @@
     "@astrojs/cloudflare": "^10.4.1",
     "@astrojs/mdx": "^3.1.1",
     "@astrojs/tailwind": "^5.1.0",
+    "@logsnag/astro": "^1.0.0-beta.1",
     "@shikijs/transformers": "^1.6.5",
     "@tailwindcss/typography": "^0.5.13",
     "astro": "^4.10.2",

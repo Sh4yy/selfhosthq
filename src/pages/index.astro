@@ -1,0 +1,47 @@
+---
+import ProseLayout from "../layouts/ProseLayout.astro";
+import Newsletter from "../components/newsletter.astro";
+import { LogSnag } from "@logsnag/astro/server";
+
+if (Astro.request.method === "POST") {
+  const formData = await Astro.request.formData();
+  const email = formData.get("email") as string;
+  if (!email) {
+    return Astro.redirect(
+      `/?error=${encodeURIComponent("Please enter an email")}`
+    );
+  }
+  const sng = new LogSnag({
+    token: import.meta.env.LOGSNAG_TOKEN,
+    project: import.meta.env.LOGSNAG_PROJECT,
+  });
+  await sng.track({
+    channel: "newsletter",
+    event: `New Subscriber`,
+    description: `${email} has subscribed to the newsletter`,
+    icon: "🌟",
+    notify: true,
+    user_id: email,
+    tags: {
+      email: email.trim(),
+    },
+  });
+  return Astro.redirect("/?registered=true");
+}
+---
+
+<ProseLayout>
+  <h1>hello world!</h1>
+  <p>
+    SelfhostHQ is a community-driven, open-source project that aims to provide
+    comprehensive guides and best practices for self-hosting services. Our goal
+    is to make self-hosting easy and accessible to everyone.
+  </p>
+  <p>
+    If you're interested in contributing to this project, please visit our
+    <a href="https://github.com/Sh4yy/selfhosthq" target="_blank">GitHub</a> page.
+    We welcome all contributions, including feedback, bug reports, and pull requests.
+  </p>
+  <p>Happy self-hosting! (✿◠‿◠)</p>
+  <Newsletter />
+</ProseLayout>
