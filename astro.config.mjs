@@ -1,6 +1,6 @@
 import { defineConfig } from "astro/config";
+import cloudflare from "@astrojs/cloudflare";
 import tailwind from "@astrojs/tailwind";
-
 import {
   transformerNotationDiff,
   transformerNotationHighlight,
@@ -13,7 +13,6 @@ import {
   transformerCompactLineOptions,
 } from "@shikijs/transformers";
 
-// https://astro.build/config
 export default defineConfig({
   output: "server",
   devToolbar: {
@@ -36,4 +35,5 @@ export default defineConfig({
     },
   },
   integrations: [tailwind()],
+  adapter: cloudflare(),
 });
