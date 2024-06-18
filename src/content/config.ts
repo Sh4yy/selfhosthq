@@ -77,8 +77,8 @@ const Hetzner = defineCollection({
 
 export const collections = {
   sqlite: SQLite,
-  postgres: Postgres,
-  caddy: Caddy,
+  // postgres: Postgres,
+  // caddy: Caddy,
   hetzner: Hetzner,
-  redis: Redis,
+  // redis: Redis,
 };

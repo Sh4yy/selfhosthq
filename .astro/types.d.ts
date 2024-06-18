@@ -141,31 +141,24 @@ declare module 'astro:content' {
   slug: "configure";
   body: string;
   collection: "caddy";
-  data: InferEntrySchema<"caddy">
+  data: any
 } & { render(): Render[".md"] };
 "container.md": {
 	id: "container.md";
   slug: "container";
   body: string;
   collection: "caddy";
-  data: InferEntrySchema<"caddy">
+  data: any
 } & { render(): Render[".md"] };
 "intro.md": {
 	id: "intro.md";
   slug: "intro";
   body: string;
   collection: "caddy";
-  data: InferEntrySchema<"caddy">
+  data: any
 } & { render(): Render[".md"] };
 };
 "hetzner": {
-"balancer.md": {
-	id: "balancer.md";
-  slug: "balancer";
-  body: string;
-  collection: "hetzner";
-  data: InferEntrySchema<"hetzner">
-} & { render(): Render[".md"] };
 "firewall.md": {
 	id: "firewall.md";
   slug: "firewall";
@@ -176,6 +169,13 @@ declare module 'astro:content' {
 "intro.md": {
 	id: "intro.md";
   slug: "intro";
+  body: string;
+  collection: "hetzner";
+  data: InferEntrySchema<"hetzner">
+} & { render(): Render[".md"] };
+"load-balancer.md": {
+	id: "load-balancer.md";
+  slug: "load-balancer";
   body: string;
   collection: "hetzner";
   data: InferEntrySchema<"hetzner">
@@ -201,28 +201,28 @@ declare module 'astro:content' {
   slug: "backups";
   body: string;
   collection: "postgres";
-  data: InferEntrySchema<"postgres">
+  data: any
 } & { render(): Render[".md"] };
 "configure.md": {
 	id: "configure.md";
   slug: "configure";
   body: string;
   collection: "postgres";
-  data: InferEntrySchema<"postgres">
+  data: any
 } & { render(): Render[".md"] };
 "container.md": {
 	id: "container.md";
   slug: "container";
   body: string;
   collection: "postgres";
-  data: InferEntrySchema<"postgres">
+  data: any
 } & { render(): Render[".md"] };
 "intro.md": {
 	id: "intro.md";
   slug: "intro";
   body: string;
   collection: "postgres";
-  data: InferEntrySchema<"postgres">
+  data: any
 } & { render(): Render[".md"] };
 };
 "redis": {
@@ -231,21 +231,21 @@ declare module 'astro:content' {
   slug: "backups";
   body: string;
   collection: "redis";
-  data: InferEntrySchema<"redis">
+  data: any
 } & { render(): Render[".md"] };
 "container.md": {
 	id: "container.md";
   slug: "container";
   body: string;
   collection: "redis";
-  data: InferEntrySchema<"redis">
+  data: any
 } & { render(): Render[".md"] };
 "intro.md": {
 	id: "intro.md";
   slug: "intro";
   body: string;
   collection: "redis";
-  data: InferEntrySchema<"redis">
+  data: any
 } & { render(): Render[".md"] };
 };
 "sqlite": {
