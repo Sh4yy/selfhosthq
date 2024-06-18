@@ -7,8 +7,6 @@ lastModifiedAt: 2024-03-14
 publishedAt: 2024-03-14
 ---
 
-replace with lorem ipseum, keep the layout.
-
 ## Introduction to Lorem Ipsum
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Here are some key features of Lorem Ipsum:

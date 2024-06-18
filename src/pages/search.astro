@@ -5,6 +5,11 @@ import MiniSearch from "minisearch";
 import DocsLayout from "../layouts/DocsLayout.astro";
 const query = Astro.url.searchParams.get("search") ?? "";
 
+Astro.response.headers.set(
+  "Cache-Control",
+  "public, max-age=300, s-maxage=3600"
+);
+
 const allCollections = await Promise.all(
   // @ts-ignore
   Object.keys(collections).map(getCollection)

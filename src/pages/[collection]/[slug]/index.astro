@@ -9,6 +9,11 @@ if (!entry) {
   return Astro.redirect("/");
 }
 
+Astro.response.headers.set(
+  "Cache-Control",
+  "public, max-age=300, s-maxage=3600"
+);
+
 const { Content } = await entry.render();
 ---
 
