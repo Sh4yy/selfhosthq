@@ -11,9 +11,14 @@ if (Astro.request.method === "POST") {
       `/?error=${encodeURIComponent("Please enter an email")}`
     );
   }
+
   const sng = new LogSnag({
-    token: import.meta.env.LOGSNAG_TOKEN,
-    project: import.meta.env.LOGSNAG_PROJECT,
+    token: import.meta.env.DEV
+      ? import.meta.env.LOGSNAG_TOKEN
+      : Astro.locals.runtime.env.LOGSNAG_TOKEN,
+    project: import.meta.env.DEV
+      ? import.meta.env.LOGSNAG_PROJECT
+      : Astro.locals.runtime.env.LOGSNAG_PROJECT,
   });
   try {
     await sng.track({
