@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+    <path d="M12 2.25c-4.56 0-8.24 3.69-8.45 8.28 -1.95.76-3.31 2.69-3.31 4.93 0 2.89 2.28 5.28 5.15 5.28h12.1c3.47 0 6.25-2.9 6.25-6.42 0-2.577-1.49-4.82-3.64-5.83 -1.02-3.61-4.26-6.26-8.12-6.26Z">
+    <style>
+        path { fill: black; }
+        @media (prefers-color-scheme: dark) {
+            path { fill: white; }
+        }
+    </style>
+    </path>
+</svg>

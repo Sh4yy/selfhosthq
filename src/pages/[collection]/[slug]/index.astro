@@ -1,0 +1,17 @@
+---
+import ProseLayout from "../../../layouts/ProseLayout.astro";
+import { getEntry } from "astro:content";
+
+const { collection, slug } = Astro.params;
+// @ts-ignore
+const entry = await getEntry(collection, slug);
+if (!entry) {
+  return Astro.redirect("/");
+}
+
+const { Content } = await entry.render();
+---
+
+<ProseLayout title={entry.data.title} description={entry.data.description}>
+  <Content />
+</ProseLayout>

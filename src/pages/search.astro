@@ -1,0 +1,63 @@
+---
+import { getCollection } from "astro:content";
+import { collections } from "../content/config";
+import MiniSearch from "minisearch";
+import DocsLayout from "../layouts/DocsLayout.astro";
+const query = Astro.url.searchParams.get("search") ?? "";
+
+const allCollections = await Promise.all(
+  // @ts-ignore
+  Object.keys(collections).map(getCollection)
+);
+
+const result = allCollections.flatMap((c) => {
+  return c.map((e) => {
+    return {
+      id: `${e.collection}/${e.slug}`,
+      title: e.data.title,
+      shortTitle: e.data.shortTitle,
+      description: e.data.description,
+      body: e.body,
+    };
+  });
+});
+
+const minisearch = new MiniSearch<{
+  title: string;
+  shortTitle: string;
+  description: string;
+  body: string;
+}>({
+  fields: ["title", "shortTitle", "description", "body"],
+  storeFields: ["title", "href", "description"],
+});
+
+minisearch.addAll(result);
+const searchResult = minisearch.search(query);
+---
+
+<DocsLayout>
+  <div class="rounded-lg shadow-lg">
+    <ul class="flex flex-col gap-2">
+      {
+        searchResult.map((e, i) => {
+          return (
+            <>
+              <li class="text-gray-200">
+                <a href={e.id} class="block text-orange-400 font-semibold">
+                  <span>{e.title}</span>
+                  <p class="text-gray-400 text-balance text-sm font-medium mt-2">
+                    {e.description}
+                  </p>
+                </a>
+              </li>
+              {i !== searchResult.length - 1 && (
+                <hr class="my-4 border-gray-800" />
+              )}
+            </>
+          );
+        })
+      }
+    </ul>
+  </div>
+</DocsLayout>

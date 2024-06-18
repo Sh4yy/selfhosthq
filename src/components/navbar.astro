@@ -1,0 +1,37 @@
+---
+import Search from "./search.astro";
+import Links from "./links.astro";
+---
+
+<div
+  class="flex items-center z-30 gap-5 justify-end sticky top-0 bg-gray-950 pb-2"
+>
+  <button onclick="toggleSidebar()" class="md:hidden">
+    <svg
+      viewBox="0 0 24 24"
+      class="text-gray-200 h-6"
+      xmlns="http://www.w3.org/2000/svg"
+      ><path
+        fill="currentColor"
+        d="M3 6.75h18c.41 0 .75-.34.75-.75 0-.42-.34-.75-.75-.75H3c-.42 0-.75.33-.75.75 0 .41.33.75.75.75Zm0 6h8c.41 0 .75-.34.75-.75 0-.42-.34-.75-.75-.75H3c-.42 0-.75.33-.75.75 0 .41.33.75.75.75Zm0 6h13c.41 0 .75-.34.75-.75 0-.42-.34-.75-.75-.75H3c-.42 0-.75.33-.75.75 0 .41.33.75.75.75Z"
+      ></path></svg
+    >
+  </button>
+  <Search />
+  <Links />
+</div>
+
+<script is:inline>
+  const toggleSidebar = () => {
+    // get the sidebar element
+    const sidebar = document.getElementById("sidebar");
+    const overlay = document.getElementById("overlay");
+    const sidebarToggle = document.getElementById("sidebar-toggle");
+    // toggle the sidebar class
+    if (!sidebar || !overlay) return;
+    const isOpen = sidebar.getAttribute("data-open") === "true";
+    sidebar.setAttribute("data-open", (!isOpen).toString());
+    overlay.classList.toggle("hidden");
+    sidebarToggle.classList.toggle("hidden");
+  };
+</script>
