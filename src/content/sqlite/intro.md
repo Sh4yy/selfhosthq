@@ -50,5 +50,5 @@ SELECT * FROM users;
 ```
 
 This example shows how to create a table, insert data, and query data from a SQLite database, demonstrating its simplicity and effectiveness for straightforward database tasks.
----
+
 [Learn more at sqlite.org](https://www.sqlite.org)
