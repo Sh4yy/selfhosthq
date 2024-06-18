@@ -3,11 +3,11 @@ import { getCollection } from "astro:content";
 import { collections } from "../content/config";
 import MiniSearch from "minisearch";
 import DocsLayout from "../layouts/DocsLayout.astro";
-const query = Astro.url.searchParams.get("search") ?? "";
+const query = Astro.url.searchParams.get("q") ?? "";
 
 Astro.response.headers.set(
   "Cache-Control",
-  "public, max-age=300, s-maxage=3600"
+  "public, max-age=3600, s-maxage=3600, stale-while-revalidate=3600"
 );
 
 const allCollections = await Promise.all(
