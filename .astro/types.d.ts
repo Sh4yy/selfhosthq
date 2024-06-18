@@ -158,6 +158,29 @@ declare module 'astro:content' {
   data: InferEntrySchema<"caddy">
 } & { render(): Render[".md"] };
 };
+"hetzner": {
+"balancer.md": {
+	id: "balancer.md";
+  slug: "balancer";
+  body: string;
+  collection: "hetzner";
+  data: InferEntrySchema<"hetzner">
+} & { render(): Render[".md"] };
+"firewall.md": {
+	id: "firewall.md";
+  slug: "firewall";
+  body: string;
+  collection: "hetzner";
+  data: InferEntrySchema<"hetzner">
+} & { render(): Render[".md"] };
+"provision.md": {
+	id: "provision.md";
+  slug: "provision";
+  body: string;
+  collection: "hetzner";
+  data: InferEntrySchema<"hetzner">
+} & { render(): Render[".md"] };
+};
 "postgres": {
 "backups.md": {
 	id: "backups.md";
