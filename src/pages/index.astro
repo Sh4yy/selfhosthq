@@ -15,17 +15,21 @@ if (Astro.request.method === "POST") {
     token: import.meta.env.LOGSNAG_TOKEN,
     project: import.meta.env.LOGSNAG_PROJECT,
   });
-  await sng.track({
-    channel: "newsletter",
-    event: `New Subscriber`,
-    description: `${email} has subscribed to the newsletter`,
-    icon: "🌟",
-    notify: true,
-    user_id: email,
-    tags: {
-      email: email.trim(),
-    },
-  });
+  try {
+    await sng.track({
+      channel: "newsletter",
+      event: `New Subscriber`,
+      description: `${email} has subscribed to the newsletter`,
+      icon: "🌟",
+      notify: true,
+      user_id: email,
+      tags: {
+        email: email.trim(),
+      },
+    });
+  } catch (e) {
+    console.error(e);
+  }
   return Astro.redirect("/?registered=true");
 }
 ---
