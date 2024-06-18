@@ -5,6 +5,9 @@ interface Props extends SEOProps {
   frontmatter?: any;
 }
 
+// Set the cache control header to 1 hour
+Astro.response.headers.set("Cache-Control", "public, max-age=3600");
+
 const props = {
   ...Astro.props,
   ...Astro.props.frontmatter,
