@@ -38,7 +38,11 @@ const minisearch = new MiniSearch<{
 });
 
 minisearch.addAll(result);
-const searchResult = minisearch.search(query);
+const suggestions = minisearch.autoSuggest(query);
+// search for query and all suggestions
+const searchResult = minisearch.search({
+  queries: [query, ...suggestions.map((e) => e.terms)].flatMap((e) => e),
+});
 ---
 
 <DocsLayout>
