@@ -27,10 +27,12 @@ import Links from "./links.astro";
     const sidebar = document.getElementById("sidebar");
     const overlay = document.getElementById("overlay");
     const sidebarToggle = document.getElementById("sidebar-toggle");
+    const body = document.querySelector("body");
     // toggle the sidebar class
     if (!sidebar || !overlay) return;
     const isOpen = sidebar.getAttribute("data-open") === "true";
     sidebar.setAttribute("data-open", (!isOpen).toString());
+    body.classList.toggle("overflow-hidden");
     overlay.classList.toggle("hidden");
     sidebarToggle.classList.toggle("hidden");
   };
