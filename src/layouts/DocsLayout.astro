@@ -16,9 +16,9 @@ const allCollections = await Promise.all(
 
 <Layout {...Astro.props}>
   <main
-    class="flex max-h-screen mx-auto max-w-5xl md:gap-14 px-8 md:px-10 lg:px-12 py-4 md:py-8 lg:py-12"
+    class="flex mx-auto max-w-5xl md:gap-14 px-8 md:px-10 lg:px-12 py-4 md:py-8 lg:py-12"
   >
-    <aside class="shrink-0 overflow-y-auto pt-1">
+    <aside class="shrink-0">
       <Sidebar
         sections={allCollections.map((collection) => ({
           title: collection[0].data.name,
@@ -31,7 +31,7 @@ const allCollections = await Promise.all(
         }))}
       />
     </aside>
-    <main class="overflow-y-auto gap-8 flex flex-col w-full md:pr-3">
+    <main class="gap-8 flex flex-col w-full">
       <Navbar />
       <slot />
     </main>
