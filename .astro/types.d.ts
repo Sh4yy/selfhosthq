@@ -256,6 +256,13 @@ declare module 'astro:content' {
   collection: "sqlite";
   data: InferEntrySchema<"sqlite">
 } & { render(): Render[".md"] };
+"ws4sqlite.md": {
+	id: "ws4sqlite.md";
+  slug: "ws4sqlite";
+  body: string;
+  collection: "sqlite";
+  data: InferEntrySchema<"sqlite">
+} & { render(): Render[".md"] };
 };
 
 	};

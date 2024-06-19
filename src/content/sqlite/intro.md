@@ -6,6 +6,7 @@ description: "SQLite is a C-library that provides a lightweight disk-based datab
 lastModifiedAt: 2024-06-18
 publishedAt: 2024-06-18
 ---
+
 ## Introduction to SQLite
 
 SQLite is a lightweight and efficient database engine widely used across various applications due to its simplicity and portability. It offers several key features that make it an excellent choice for a range of applications:
