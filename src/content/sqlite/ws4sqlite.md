@@ -22,7 +22,7 @@ ws4sqlite is a Go application which you can download the binary directly from th
 Once you have downloaded or built ws4sqlite, you can run your server and create a new SQLite database.
 
 ```bash
-❯ ./ws4sqlite --db selfhost.db
+❯ ./ws4sqlite --db selfhost.db  # [!code focus]
 
 ws4sqlite v0.16.1, based on sqlite v3.45.2
 - Serving database 'selfhost' from selfhost.db?_pragma=journal_mode(WAL)
@@ -178,7 +178,7 @@ auth:
 This will create a new user called `user1` with the password `password`. Now, we can simply run our server again, and it will automatically use the new config file.
 
 ```bash
-❯ ./ws4sqlite --db selfhost.db
+❯ ./ws4sqlite --db selfhost.db # [!code focus]
 
 ws4sqlite v0.16.1, based on sqlite v3.45.2
 - Serving database 'selfhost' from selfhost.db?_pragma=journal_mode(WAL)
@@ -215,7 +215,7 @@ Additionally, ws4sqlite supports hashing passwords. This is a good practice to u
 To do this, we can simply replace the `password` field with `hashedPassword` in our config file and provide a SHA-256 hashed password.
 
 ```bash
-❯ echo -n "password" | sha256sum
+❯ echo -n "password" | sha256sum # [!code focus]
 
 5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8  -
 ```
@@ -254,7 +254,7 @@ This will schedule a backup task to run every hour, store the backups in the `./
 To restore from a backup, we can simply copy the backup file to the database file, and run our server again.
 
 ```bash
-❯ ./ws4sqlite --db selfhost.db
+❯ ./ws4sqlite --db selfhost.db # [!code focus]
 ```
 
 ## Conclusion
