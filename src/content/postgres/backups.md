@@ -1,4 +1,5 @@
 ---
+order: 3
 title: "Backing up and restoring Postgres"
 shortTitle: "Backups"
 description: "How to backup and restore Postgres databases."

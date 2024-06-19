@@ -1,115 +1,137 @@
 ---
-import type { SEOProps } from "astro-seo";
+import { SEO, type SEOProps } from "astro-seo";
 import { getCollection } from "astro:content";
 import Sidebar from "../components/sidebar.astro";
 import Layout from "./Layout.astro";
 import { collections } from "../content/config";
 import Navbar from "../components/navbar.astro";
 
-interface Props extends SEOProps {}
+interface Props extends SEOProps {
+[x: string]: any;
+}
 
 const allCollections = await Promise.all(
   // @ts-ignore
   Object.keys(collections).map(getCollection)
 );
+
+const props = {
+  ...Astro.props,
+  ...Astro.props.frontmatter,
+};
 ---
 
-<Layout {...Astro.props}>
-  <main
-    class="flex max-h-screen mx-auto max-w-5xl md:gap-14 px-8 md:px-10 lg:px-12 py-4 md:py-8 lg:py-12"
-  >
-    <aside class="shrink-0 overflow-y-auto pt-1">
-      <Sidebar
-        sections={allCollections.map((collection) => ({
-          title: collection[0].data.name,
-          subsections: collection
-            .sort((a, b) => a.data.order - b.data.order)
-            .map((entry) => ({
-              title: entry.data.shortTitle,
-              href: `/${entry.collection}/${entry.slug}`,
-            })),
-        }))}
-      />
-    </aside>
-    <main class="overflow-y-auto gap-8 flex flex-col w-full md:pr-3">
-      <Navbar />
-      <slot />
-    </main>
-  </main>
+<!doctype html>
+<html class="scroll-smooth antialiased" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap"
+      rel="stylesheet"
+    />
+    <SEO {...props} />
+  </head>
+  <body class="text-white bg-gray-950">
+    <Layout {...props}>
+      <main class="text-white flex flex-col md:flex-row max-h-screen mx-auto max-w-5xl md:gap-14 px-4 sm:px-6 md:px-10 lg:px-12 py-4 md:py-8 lg:py-12">
+        <aside class="text-white shrink-0 overflow-y-auto pt-1 md:w-1/4">
+          <Sidebar
+            sections={allCollections.map((collection) => ({
+              title: collection[0].data.name,
+              subsections: collection
+                .sort((a, b) => a.data.order - b.data.order)
+                .map((entry) => ({
+                  title: entry.data.shortTitle,
+                  href: `/${entry.collection}/${entry.slug}`,
+                })),
+            }))}
+          />
+        </aside>
+        <main class="text-white overflow-y-auto gap-8 flex flex-col w-full md:pr-3">
+          <Navbar />
+          <slot />
+        </main>
+      </main>
 
-  <style is:global>
-    ::-webkit-scrollbar {
-      display: none;
-    }
+      <style is:global>
+        ::-webkit-scrollbar {
+          display: none;
+        }
 
-    body {
-      -ms-overflow-style: none;
-      scrollbar-width: none;
-    }
+        body {
+          -ms-overflow-style: none;
+          scrollbar-width: none;
+        }
 
-    .overflow-y-auto {
-      scrollbar-width: none;
-    }
+        .overflow-y-auto {
+          scrollbar-width: none;
+        }
 
-    .line.highlighted.error {
-      background-color: #f43f5e24;
-    }
+        .line.highlighted.error {
+          background-color: #f43f5e24;
+        }
 
-    .line.highlighted {
-      background-color: #8e96aa24;
-      transition: background-color 0.5s;
-      margin: 0 -24px;
-      padding: 0 24px;
-      width: calc(100% + 48px);
-      display: inline-block;
-    }
+        .line.highlighted {
+          background-color: #8e96aa24;
+          transition: background-color 0.5s;
+          margin: 0 -24px;
+          padding: 0 24px;
+          width: calc(100% + 48px);
+          display: inline-block;
+        }
 
-    .line.highlighted.warning {
-      background-color: #eab30824;
-    }
+        .line.highlighted.warning {
+          background-color: #eab30824;
+        }
 
-    .diff {
-      margin: 0 -24px;
-      padding: 0 24px;
-      width: calc(100% + 48px);
-      display: inline-block;
-    }
+        .diff {
+          margin: 0 -24px;
+          padding: 0 24px;
+          width: calc(100% + 48px);
+          display: inline-block;
+        }
 
-    .diff.add {
-      background-color: #10b98124;
-    }
+        .diff.add {
+          background-color: #10b98124;
+        }
 
-    .diff.remove {
-      background-color: #f43f5e24;
-      opacity: 0.7;
-    }
+        .diff.remove {
+          background-color: #f43f5e24;
+          opacity: 0.7;
+        }
 
-    .diff.remove:before {
-      content: "-";
-      color: #b34e52;
-      position: absolute;
-    }
+        .diff.remove:before {
+          content: "-";
+          color: #b34e52;
+          position: absolute;
+        }
 
-    .diff.add:before {
-      content: "+";
-      color: #18794e;
-      position: absolute;
-    }
+        .diff.add:before {
+          content: "+";
+          color: #18794e;
+          position: absolute;
+        }
 
-    .has-focused .line {
-      opacity: 0.5;
-    }
+        .has-focused .line {
+          opacity: 0.5;
+        }
 
-    .has-focused .focused {
-      opacity: 1;
-    }
+        .has-focused .focused {
+          opacity: 1;
+        }
 
-    .highlighted-word {
-      background-color: #f6f6f7;
-      border: 1px solid #c2c2c4;
-      padding: 1px 3px;
-      margin: -1px -3px;
-      border-radius: 4px;
-    }
-  </style>
-</Layout>
+        .highlighted-word {
+          background-color: #f6f6f7;
+          border: 1px solid #c2c2c4;
+          padding: 1px 3px;
+          margin: -1px -3px;
+          border-radius: 4px;
+        }
+      </style>
+    </Layout>
+  </body>
+</html>
