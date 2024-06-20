@@ -2,34 +2,41 @@
 import { SEO, type SEOProps } from "astro-seo";
 
 interface Props extends SEOProps {
-  frontmatter?: any;
+	frontmatter?: any;
 }
 
 const props: Props = {
 	title: "SelfhostHQ",
 	description:
 		"SelfhostHQ is a community-driven, open-source project that aims to provide comprehensive guides and best practices for self-hosting services. Our goal is to make self-hosting easy and accessible to everyone.",
-  ...Astro.props,
-  ...Astro.props.frontmatter,
+	openGraph: {
+		basic: {
+			type: "website",
+			title: "SelfhostHQ",
+			image: "https://selfhosthq.com/og.jpg",
+		},
+	},
+	...Astro.props,
+	...Astro.props.frontmatter,
 };
 ---
 
 <!doctype html>
 <html class="scroll-smooth antialiased" lang="en">
-  <head>
-    <SEO {...props} />
-    {/* Google Fonts */}
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap"
-      rel="stylesheet"
-    />
-    <meta charset="utf-8" />
-  </head>
-  <body class="bg-gray-950">
-    <slot />
-  </body>
+	<head>
+		<SEO {...props} />
+		{/* Google Fonts */}
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap"
+			rel="stylesheet"
+		/>
+		<meta charset="utf-8" />
+	</head>
+	<body class="bg-gray-950">
+		<slot />
+	</body>
 </html>
