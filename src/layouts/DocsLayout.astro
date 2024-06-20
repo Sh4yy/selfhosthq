@@ -12,6 +12,33 @@ const allCollections = await Promise.all(
   // @ts-ignore
   Object.keys(collections).map(getCollection)
 );
+
+// TODO: clean this up later.
+const lastModified = allCollections.reduce((acc, collection) => {
+  const collectionLastModified = collection.reduce((subAcc, submission) => {
+    return new Date(submission.data.lastModifiedAt) > subAcc ? new Date(submission.data.lastModifiedAt) : subAcc;
+  }, new Date(0));
+  return collectionLastModified > acc ? collectionLastModified : acc;
+}, new Date(0));
+
+const lastCreated = allCollections.reduce((acc, collection) => {
+  const collectionLastCreated = collection.reduce((subAcc, submission) => {
+    return new Date(submission.data.publishedAt) > subAcc ? new Date(submission.data.publishedAt) : subAcc;
+  }, new Date(0));
+  return collectionLastCreated > acc ? collectionLastCreated : acc;
+}, new Date(0));
+
+const getStatus = (publishedAt: string, lastModifiedAt: string) => {
+  const published = new Date(publishedAt);
+  const modified = new Date(lastModifiedAt);
+  if (modified >= lastModified) {
+    return "updated";
+  } else if (published >= lastCreated) {
+    return "new";
+  } else {
+    return undefined;
+  }
+};
 ---
 
 <Layout {...Astro.props}>
@@ -27,6 +54,7 @@ const allCollections = await Promise.all(
             .map((entry) => ({
               title: entry.data.shortTitle,
               href: `/${entry.collection}/${entry.slug}`,
+              status: getStatus(entry.data.publishedAt, entry.data.lastModifiedAt),
             })),
         }))}
       />

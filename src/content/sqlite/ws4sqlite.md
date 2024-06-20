@@ -3,8 +3,8 @@ order: 1
 shortTitle: "ws4sqlite"
 title: "Deploying a SQLite database with ws4sqlite"
 description: "ws4sqlite is a server-side application that allows performing SQL queries and statements on SQLite files via REST (JSON over HTTP). It enables remote access to SQLite databases, making it useful for remote applications, serverless environments, or web pages."
-lastModifiedAt: 2024-06-18
-publishedAt: 2024-06-18
+lastModifiedAt: 2024-06-20
+publishedAt: 2024-06-19
 ---
 
 # Deploying a SQLite database with ws4sqlite
