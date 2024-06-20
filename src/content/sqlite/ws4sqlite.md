@@ -196,9 +196,7 @@ import requests
 url = "http://localhost:12321/selfhost"
 payload = {
     "transaction": {
-      "query": {
-        "statement": "SELECT * FROM USERS;"
-      }
+      "query": "SELECT * FROM USERS;"
     }
 }
 
