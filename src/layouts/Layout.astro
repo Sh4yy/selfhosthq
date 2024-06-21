@@ -5,7 +5,17 @@ interface Props extends SEOProps {
   frontmatter?: any;
 }
 
-const props = {
+const props: Props = {
+  title: "SelfhostHQ",
+  description:
+    "SelfhostHQ is a community-driven, open-source project that aims to provide comprehensive guides and best practices for self-hosting services. Our goal is to make self-hosting easy and accessible to everyone.",
+  openGraph: {
+    basic: {
+      type: "website",
+      title: "SelfhostHQ",
+      image: "https://selfhosthq.com/og.jpg",
+    },
+  },
   ...Astro.props,
   ...Astro.props.frontmatter,
 };
